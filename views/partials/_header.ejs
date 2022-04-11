@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark"></nav>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a class="navbar-brand" href="/">Quiz App</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,4 +10,17 @@
       <a class="nav-item nav-link" href="/urls/new">Create New Quiz</a>
     </div>
   </div>
+
+    <% if (user) { %>
+      <form action="/logout" method="POST" class="form-inline">
+        <div class="navbar-nav" style="padding-right: 1cm">Logged in as: <%= user.email %></div>
+        <button type="submit" class="btn btn-primary">Logout</button>
+      </form>
+        <% } else { %>
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/login">Login</a>
+            <a class="nav-item nav-link" href="/register">Register</a>
+          </div>
+        <% } %>
+  </nav>
 </header>
