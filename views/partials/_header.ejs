@@ -6,21 +6,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="/urls">My Quizzes</a>
-      <a class="nav-item nav-link" href="/urls/new">Create New Quiz</a>
+      <a class="nav-item nav-link" href="/quizzes">My Quizzes</a>
+      <a class="nav-item nav-link" href="/quizzes/new">Create New Quiz</a>
     </div>
   </div>
 
-    <% if (user) { %>
-      <form action="/logout" method="POST" class="form-inline">
-        <div class="navbar-nav" style="padding-right: 1cm">Logged in as: <%= user.email %></div>
-        <button type="submit" class="btn btn-primary">Logout</button>
-      </form>
-        <% } else { %>
-          <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/login">Login</a>
-            <a class="nav-item nav-link" href="/register">Register</a>
-          </div>
-        <% } %>
   </nav>
 </header>
