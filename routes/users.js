@@ -21,9 +21,5 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  router.get("/register", (req, res) => {
-    //const templateVars = {user: req.session["userID"]}
-    res.render("quiz_register")
-  });
   return router;
 };
