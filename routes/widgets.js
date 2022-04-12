@@ -23,5 +23,14 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  //CREATE QUIZ -- GET
+  router.get("/quizzes/new", (req, res) => {
+    //let templateVars = {};
+    res.render("quiz_create");
+  });
+
+
+
   return router;
 };
