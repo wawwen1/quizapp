@@ -6,11 +6,11 @@ VALUES
 
 INSERT INTO questions (quiz_id,text)
   VALUES
-  (1, 'texttexttexttexttexttexttexttexttexttexttexttext'),
-  (2, 'texttexttexttexttexttexttexttexttexttexttexttext'),
-  (3, 'texttexttexttexttexttexttexttexttexttexttexttext');
+  (1, 'texttexttexttexttexttexttexttexttexttexttexttextQUESTION1'),
+  (2, 'texttexttexttexttexttexttexttexttexttexttexttextQUESTION2'),
+  (3, 'texttexttexttexttexttexttexttexttexttexttexttextQUESTION3');
 
-INSERT INTO public.answers (answer,question_id, correct) VALUES
+INSERT INTO answers (answer,question_id, correct) VALUES
 	 ('texttexttexttexttexttexttexttexttexttexttexttextBUT ALSO CORRECT',1, true),
 	 ('texttexttexttexttexttexttexttexttexttexttexttext',1, false),
 	 ('texttexttexttexttexttexttexttexttexttexttexttext',1, false),

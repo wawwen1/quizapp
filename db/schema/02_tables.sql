@@ -16,5 +16,6 @@ CREATE TABLE questions (
 CREATE TABLE answers (
   id SERIAL PRIMARY KEY NOT NULL,
   answer TEXT NOT NULL,
-  question_id INT REFERENCES questions(id) ON DELETE CASCADE
+  question_id INT REFERENCES questions(id) ON DELETE CASCADE,
+  correct BOOLEAN
 );

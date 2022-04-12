@@ -32,11 +32,11 @@
       </tr>
     </thead>
     <tbody>
-      <% for (let quiz of quizzes) { %>
+      <% for (let question of questions) { %>
       <tr>
-        <td><%= quiz.name %>  </td>
-        <td><%= quiz.description %></td>
-        <td><a href="http://localhost:8080/quizzes/<%= quiz.id %> ">Test!</a></td>
+        <td><%= question.id %>  </td>
+        <td><%= question.text %></td>
+        <td><a href="http://localhost:8080/quizzes/<%= question.id %> ">Test!</a></td>
       </tr>
       <% } %>
     </tbody>
