@@ -13,24 +13,55 @@
   <body>
     <%- include('partials/_header') %>
     <main style="margin: 1em;">
+
       <form action="/api/widgets/quizzes/new" method="POST">
 
         <div class ="quiz-title">
           <h2>Create Quiz</h2>
         </div>
 
-        <div class="quiz-private-check">
+        <div class="quiz-name">
+          <label for="name">Quiz Name</label>
+          <input type="text" class="form-control" placeholder="Enter the name of the quiz">
+        </div>
+
+        <div class="quiz-description">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" placeholder="Enter a short description of the quiz">
+        </div>
+
+        <div class="quiz-question">
+          <label><h3>Question 1</h3></label>
+          <input type="text" class="form-control" placeholder="Enter question">
+        </div>
+
+
+        <div class="quiz-answer">
+          <input type="radio" id="q1-a1" name="q1" value="1">
+          <input type="text" placeholder="Answer 1">
+        </div>
+
+        <div class="quiz-answer">
+          <input type="radio" id="q1-a2" name="q1" value="2">
+          <input type="text" placeholder="Answer 2">
+        </div>
+
+        <div class="quiz-answer">
+          <input type="radio" id="q1-a3" name="q1" value="3">
+          <input type="text" placeholder="Answer 3">
+        </div>
+
+        <div class="quiz-answer">
+          <input type="radio" id="q1-a4" name="q1" value="4">
+          <input type="text" placeholder="Answer 4">
+        </div>
+
+        <div class="quiz-private">
           <input type="checkbox" name="private" value="true">
           <label for="private"> Private</label>
         </div>
 
-        <div class="container">
-          <label for="name">Quiz Name</label>
-          <input class="form-control" type="text" placeholder="Enter the name of the quiz">
-
-          <label for="description">Description</label>
-          <input class="form-control" type="text" placeholder="Enter a short description of the quiz">
-        </div>
+        <button type="submit" class="btn btn-dark">Submit</button>
 
       </form>
 
