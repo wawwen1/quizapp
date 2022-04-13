@@ -26,8 +26,23 @@ module.exports = (db) => {
 
   //CREATE QUIZ -- GET
   router.get("/quizzes/new", (req, res) => {
-    //let templateVars = {};
     res.render("quiz_create");
+  });
+
+  //CREATE QUIZ -- POST
+  router.post("/quizzes/new", (req, res) => {
+    console.log(req.body);
+    const { name, description, private }= req.body;
+    const { q1, input1, answer1 } = req.body;
+    const { q2, input2, answer2 } = req.body;
+    const { q3, input3, answer3 } = req.body;
+
+    console.log(name);
+    console.log(description);
+    console.log(`${q1}, ${input1}, ${answer1}`);
+    console.log(`${q2}, ${input2}, ${answer2}`);
+    console.log(`${q3}, ${input3}, ${answer3}`);
+    console.log(private);
   });
 
 
