@@ -15,7 +15,13 @@ module.exports = (db) => {
   /* Get Request: quiz_selected for when user selects a quiz */
   router.get("/:id", (req, res) => {
     //const templateVars = {user: req.session["userID"]}
-    db.query(`SELECT * FROM questions WHERE quiz_id = $1;`, [req.params.id])
+    db.query(`SELECT questions.id as question_id, questions.question, quizzes.*, answers.answer
+    from questions
+    JOIN quizzes
+    ON questions.quiz_id = quizzes.id
+    JOIN answers
+    ON questions.id = answers.question_id
+    WHERE quiz_id = $1;`, [req.params.id])
       .then(result => {
         const templateVars = {questions: result.rows}
         //console.log("+++++++++++", templateVars)

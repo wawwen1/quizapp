@@ -3,7 +3,7 @@ VALUES
 ('testuser1', 'test1'),
 ('testuser2', 'test2');
 
-INSERT INTO quizzes ( name, listed , created , description, created_by )
+INSERT INTO quizzes ( name, listed , created , description, owner_id )
 VALUES
 ('quiz1', true, '01/01/2020','texttexttexttexttexttext', 1),
 ('quiz2', true, '01/01/2020','texttexttexttexttexttext', 1),

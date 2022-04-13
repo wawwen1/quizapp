@@ -8,14 +8,13 @@ CREATE TABLE users (
   username VARCHAR(255),
   password VARCHAR(60)
 );
-
 CREATE TABLE quizzes (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
   listed BOOLEAN NOT NULL,
   created DATE NOT NULL,
   description TEXT NOT NULL,
-  created_by INT REFERENCES users(id) ON DELETE CASCADE
+  owner_id INT REFERENCES users(id) ON DELETE CASCADE
 );
 CREATE TABLE questions (
   id SERIAL PRIMARY KEY NOT NULL,
