@@ -22,21 +22,22 @@
 
 <body>
 <main style="margin: 1em;">
-  <h3>My Quiz List 🥔</h3>
+  <h3> <%= 'quizname' %> </h3>
   <table class="table">
     <thead>
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Description</th>
-        <th scope="col">Quiz URL</th>
       </tr>
     </thead>
     <tbody>
       <% for (let question of questions) { %>
       <tr>
         <td><%= question.id %>  </td>
-        <td><%= question.text %></td>
-        <td><a href="http://localhost:8080/quizzes/<%= question.id %> ">Test!</a></td>
+        <td><%= question.question %></td>
+      </tr>
+      <tr>
+        <td>answers</td>
       </tr>
       <% } %>
     </tbody>

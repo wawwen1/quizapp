@@ -1,16 +1,21 @@
-INSERT INTO quizzes (name, listed , created , description)
+INSERT INTO users ( username, password )
 VALUES
-('quiz1', true, '01/01/2020','texttexttexttexttexttext'),
-('quiz2', true, '01/01/2020','texttexttexttexttexttext'),
-('quiz3', true, '01/01/2020','texttexttexttexttexttext');
+('testuser1', 'test1'),
+('testuser2', 'test2');
 
-INSERT INTO questions (quiz_id,text)
+INSERT INTO quizzes ( name, listed , created , description, created_by )
+VALUES
+('quiz1', true, '01/01/2020','texttexttexttexttexttext', 1),
+('quiz2', true, '01/01/2020','texttexttexttexttexttext', 1),
+('quiz3', true, '01/01/2020','texttexttexttexttexttext', 1);
+
+INSERT INTO questions ( quiz_id, question )
   VALUES
   (1, 'texttexttexttexttexttexttexttexttexttexttexttextQUESTION1'),
   (2, 'texttexttexttexttexttexttexttexttexttexttexttextQUESTION2'),
   (3, 'texttexttexttexttexttexttexttexttexttexttexttextQUESTION3');
 
-INSERT INTO answers (answer,question_id, correct) VALUES
+INSERT INTO answers ( answer, question_id, correct ) VALUES
 	 ('texttexttexttexttexttexttexttexttexttexttexttextBUT ALSO CORRECT',1, true),
 	 ('texttexttexttexttexttexttexttexttexttexttexttext',1, false),
 	 ('texttexttexttexttexttexttexttexttexttexttexttext',1, false),
