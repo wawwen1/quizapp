@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Home Page</title>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -14,8 +14,6 @@
 
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
-   <title>Home Page</title>
 </head>
 
 <header>
@@ -24,23 +22,25 @@
 
 <body>
 <main style="margin: 1em;">
-  <h3>Take One of Our User Generated Quizzes below 🥔</h3>
+  <h3> <%= 'quizname' %> </h3>
   <table class="table">
     <thead>
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Description</th>
-        <th scope="col">Quiz URL</th>
       </tr>
     </thead>
     <tbody>
+      <% for (let question of questions) { %>
       <tr>
-        <td>Quiz 1</td>
-        <td>First ever quiz woo woo</td>
-        <td><a href="https://www.google.com/">Test!</a></td>
+        <td><%= question.id %>  </td>
+        <td><%= question.question %></td>
       </tr>
+      <tr>
+        <td>answers</td>
+      </tr>
+      <% } %>
     </tbody>
-
   </table>
 </main>
   <!-- Bootstrap JS -->

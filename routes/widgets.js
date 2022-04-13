@@ -10,7 +10,7 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM widgets`;
+    let query = `SELECT * FROM quizzes`;
     console.log(query);
     db.query(query)
       .then(data => {
@@ -31,18 +31,48 @@ module.exports = (db) => {
 
   //CREATE QUIZ -- POST
   router.post("/quizzes/new", (req, res) => {
-    console.log(req.body);
-    const { name, description, private }= req.body;
-    const { q1, input1, answer1 } = req.body;
-    const { q2, input2, answer2 } = req.body;
-    const { q3, input3, answer3 } = req.body;
+    const { name, description, private } = req.body;
+    const q1 = { question: req.body.q1, input: req.body.input1, answer: req.body.answer1 };
+    const q2 = { question: req.body.q2, input: req.body.input2, answer: req.body.answer2 };
+    const q3 = { question: req.body.q3, input: req.body.input3, answer: req.body.answer3 };
 
-    console.log(name);
-    console.log(description);
-    console.log(`${q1}, ${input1}, ${answer1}`);
-    console.log(`${q2}, ${input2}, ${answer2}`);
-    console.log(`${q3}, ${input3}, ${answer3}`);
-    console.log(private);
+    const newQuiz = { q1, q2, q3 };
+
+    db.query(`
+    INSERT INTO quizzes (name, description, private, created)
+    VALUES ($1, $2, $3, $4)
+    RETURNING *;
+    `, [name, description, private, '2022-04-13'])
+    .then(res => {
+      console.log(res.rows[0]);
+      let quizID = res.rows[0].id;
+
+      for (let q in newQuiz) {
+        db.query(`
+        INSERT INTO questions (quiz_id, question)
+        VALUES ($1, $2)
+        RETURNING *;
+        `, [quizID, newQuiz[q].question])
+        .then(res => {
+          console.log('QUESTIONS', res.rows[0])
+          let questionID = res.rows[0].id;
+
+          db.query(`
+          INSERT INTO answers (question_id, answer, correct)
+          VALUES ($1, $2, $3)
+          RETURNING *;
+          `, [questionID, newQuiz[q].input, newQuiz[q].answer])
+          .then(res => {
+            console.log('ANSWERS', res.rows[0]);
+          })
+        })
+      }
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
   });
 
 
