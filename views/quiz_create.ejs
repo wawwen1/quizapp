@@ -4,8 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- External Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;800&display=swap" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/quiz_create.css" />
 
     <title>Create Quiz</title>
   </head>
@@ -22,7 +28,7 @@
 
         <div class="quiz-name">
           <label for="name">Quiz Name</label>
-          <input type="text" name="name" class="form-control" placeholder="Enter the name of the quiz">
+          <input type="text" id="name" name="name" class="form-control" placeholder="Enter the name of the quiz">
         </div>
 
         <div class="quiz-description">
@@ -39,23 +45,23 @@
 
 
           <div class="quiz-answer">
-            <input type="radio" name="answer1" value="1">
-            <input type="text" name="input1" placeholder="Answer 1">
+            <input type="radio" name="answer1" value="1" checked>
+            <input type="text" name="input1" class="answer" placeholder="Answer 1">
           </div>
 
           <div class="quiz-answer">
             <input type="radio" name="answer1" value="2">
-            <input type="text" name="input1" placeholder="Answer 2">
+            <input type="text" name="input1" class="answer" placeholder="Answer 2">
           </div>
 
           <div class="quiz-answer">
             <input type="radio" name="answer1" value="3">
-            <input type="text" name="input1" placeholder="Answer 3">
+            <input type="text" name="input1" class="answer" placeholder="Answer 3">
           </div>
 
           <div class="quiz-answer">
             <input type="radio" name="answer1" value="4">
-            <input type="text" name="input1" placeholder="Answer 4">
+            <input type="text" name="input1" class="answer" placeholder="Answer 4">
           </div>
         </div><br>
 
@@ -68,23 +74,23 @@
 
 
           <div class="quiz-answer">
-            <input type="radio" name="answer2" value="1">
-            <input type="text" name="input2" placeholder="Answer 1">
+            <input type="radio" name="answer2" value="1" checked>
+            <input type="text" name="input2" class="answer" placeholder="Answer 1">
           </div>
 
           <div class="quiz-answer">
             <input type="radio" name="answer2" value="2">
-            <input type="text" name="input2" placeholder="Answer 2">
+            <input type="text" name="input2" class="answer" placeholder="Answer 2">
           </div>
 
           <div class="quiz-answer">
             <input type="radio" name="answer2" value="3">
-            <input type="text" name="input2" placeholder="Answer 3">
+            <input type="text" name="input2" class="answer" placeholder="Answer 3">
           </div>
 
           <div class="quiz-answer">
             <input type="radio" name="answer2" value="4">
-            <input type="text" name="input2" placeholder="Answer 4">
+            <input type="text" name="input2" class="answer" placeholder="Answer 4">
           </div>
         </div><br>
 
@@ -97,23 +103,23 @@
 
 
           <div class="quiz-answer">
-            <input type="radio" name="answer3" value="1">
-            <input type="text" name="input3" placeholder="Answer 1">
+            <input type="radio" name="answer3" value="1" checked>
+            <input type="text" name="input3" class="answer" placeholder="Answer 1">
           </div>
 
           <div class="quiz-answer">
             <input type="radio" name="answer3" value="2">
-            <input type="text" name="input3" placeholder="Answer 2">
+            <input type="text" name="input3" class="answer" placeholder="Answer 2">
           </div>
 
           <div class="quiz-answer">
             <input type="radio" name="answer3" value="3">
-            <input type="text" name="input3" placeholder="Answer 3">
+            <input type="text" name="input3" class="answer" placeholder="Answer 3">
           </div>
 
           <div class="quiz-answer">
             <input type="radio" name="answer3" value="4">
-            <input type="text" name="input3" placeholder="Answer 4">
+            <input type="text" name="input3" class="answer" placeholder="Answer 4">
           </div>
         </div><br>
 
