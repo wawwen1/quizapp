@@ -21,13 +21,14 @@ main {
   text-align: center;
   font-family: $myFont;
   font-size: 40px;
+  margin-bottom: 20px;
 }
 
 .quiz-name {
   color: white;
   text-align: center;
-  margin: 20px;
-  width: 400px;
+  margin-bottom: 20px;
+
 }
 
 .quiz-description {
@@ -36,26 +37,32 @@ main {
 }
 
 .container {
+  width: 500px;
+  min-width: 500px;
   background-color: rgb(46,52,65);
   text-align: center;
   border: 2px solid;
   padding: 20px;
   margin: 20px auto;
 
+
   .quiz-question {
     color: white;
     margin-bottom: 20px;
+
+    .form-control {
+      height: 75px;
+      overflow-wrap: normal;
+    }
   }
 
   .quiz-answer {
     margin-bottom: 10px;
+
+    .answer {
+      width: 300px;
+    }
   }
-
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .submit-container {
