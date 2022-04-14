@@ -30,13 +30,18 @@ module.exports = (db) => {
   });
 
   //CREATE QUIZ -- POST
-  router.post("/quizzes/new", (req, res) => {
-    const { name, description, private } = req.body;
+  router.post("/quizzes/new", (req, res) => {2
+    let { private } = req.body
+    const { name, description } = req.body;
     const q1 = { question: req.body.q1, input: req.body.input1, answer: req.body.answer1 };
     const q2 = { question: req.body.q2, input: req.body.input2, answer: req.body.answer2 };
     const q3 = { question: req.body.q3, input: req.body.input3, answer: req.body.answer3 };
 
     const newQuiz = { q1, q2, q3 };
+
+    if (private === undefined) {
+      private = false;
+    }
 
     db.query(`
     INSERT INTO quizzes (name, description, private, created)
@@ -44,9 +49,10 @@ module.exports = (db) => {
     RETURNING *;
     `, [name, description, private, '2022-04-13'])
     .then(res => {
-      console.log(res.rows[0]);
+      //console.log(res.rows[0]);
       let quizID = res.rows[0].id;
 
+      //loop through each set of questions to apply individual q&a
       for (let q in newQuiz) {
         db.query(`
         INSERT INTO questions (quiz_id, question)
@@ -54,17 +60,20 @@ module.exports = (db) => {
         RETURNING *;
         `, [quizID, newQuiz[q].question])
         .then(res => {
-          console.log('QUESTIONS', res.rows[0])
+          //console.log('QUESTIONS', res.rows[0])
           let questionID = res.rows[0].id;
 
-          db.query(`
-          INSERT INTO answers (question_id, answer, correct)
-          VALUES ($1, $2, $3)
-          RETURNING *;
-          `, [questionID, newQuiz[q].input, newQuiz[q].answer])
-          .then(res => {
-            console.log('ANSWERS', res.rows[0]);
-          })
+          //when correct value = radio html value pass true to indicate correct answer
+          //when radio value != 1 (first option) how to make it = true
+
+            db.query(`
+            INSERT INTO answers (question_id, answer, correct)
+            VALUES ($1, $2, $3)
+            RETURNING *;
+            `, [questionID, newQuiz[q].input, correct])
+            .then(res => {
+              console.log('ANSWERS', res.rows[0])
+            })
         })
       }
     })
