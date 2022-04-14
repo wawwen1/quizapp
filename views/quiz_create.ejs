@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- External Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/quiz_create.css" />
+
+    <title>Create Quiz</title>
+  </head>
+
+  <body>
+    <%- include('partials/_header') %>
+    <main style="margin: 1em;">
+
+      <form action="/api/widgets/quizzes/new" method="POST">
+
+        <div class ="quiz-title">
+          <h2>Create Quiz</h2>
+        </div>
+
+        <div class="quiz-name">
+          <label for="name">Quiz Name</label>
+          <input type="text" id="name" name="name" class="form-control" placeholder="Enter the name of the quiz">
+        </div>
+
+        <div class="quiz-description">
+          <label for="description">Description</label>
+          <input type="text" name="description" class="form-control" placeholder="Enter a short description of the quiz">
+        </div><br>
+
+        <div class="container">
+
+          <div class="quiz-question">
+            <label><h3>Question 1</h3></label>
+            <input type="text" name="q1" class="form-control" placeholder="Enter question">
+          </div>
+
+
+          <div class="quiz-answer">
+            <input type="radio" name="answer1" value="1" checked>
+            <input type="text" name="input1" class="answer" placeholder="Answer 1">
+          </div>
+
+          <div class="quiz-answer">
+            <input type="radio" name="answer1" value="2">
+            <input type="text" name="input1" class="answer" placeholder="Answer 2">
+          </div>
+
+          <div class="quiz-answer">
+            <input type="radio" name="answer1" value="3">
+            <input type="text" name="input1" class="answer" placeholder="Answer 3">
+          </div>
+
+          <div class="quiz-answer">
+            <input type="radio" name="answer1" value="4">
+            <input type="text" name="input1" class="answer" placeholder="Answer 4">
+          </div>
+        </div><br>
+
+        <div class="container">
+
+          <div class="quiz-question">
+            <label><h3>Question 2</h3></label>
+            <input type="text" name="q2" class="form-control" placeholder="Enter question">
+          </div>
+
+
+          <div class="quiz-answer">
+            <input type="radio" name="answer2" value="1" checked>
+            <input type="text" name="input2" class="answer" placeholder="Answer 1">
+          </div>
+
+          <div class="quiz-answer">
+            <input type="radio" name="answer2" value="2">
+            <input type="text" name="input2" class="answer" placeholder="Answer 2">
+          </div>
+
+          <div class="quiz-answer">
+            <input type="radio" name="answer2" value="3">
+            <input type="text" name="input2" class="answer" placeholder="Answer 3">
+          </div>
+
+          <div class="quiz-answer">
+            <input type="radio" name="answer2" value="4">
+            <input type="text" name="input2" class="answer" placeholder="Answer 4">
+          </div>
+        </div><br>
+
+        <div class="container">
+
+          <div class="quiz-question">
+            <label><h3>Question 3</h3></label>
+            <input type="text" name="q3" class="form-control" placeholder="Enter question">
+          </div>
+
+
+          <div class="quiz-answer">
+            <input type="radio" name="answer3" value="1" checked>
+            <input type="text" name="input3" class="answer" placeholder="Answer 1">
+          </div>
+
+          <div class="quiz-answer">
+            <input type="radio" name="answer3" value="2">
+            <input type="text" name="input3" class="answer" placeholder="Answer 2">
+          </div>
+
+          <div class="quiz-answer">
+            <input type="radio" name="answer3" value="3">
+            <input type="text" name="input3" class="answer" placeholder="Answer 3">
+          </div>
+
+          <div class="quiz-answer">
+            <input type="radio" name="answer3" value="4">
+            <input type="text" name="input3" class="answer" placeholder="Answer 4">
+          </div>
+        </div><br>
+
+
+<div class="submit-container">
+
+  <div class="quiz-private">
+    <input type="checkbox" name="private" value="true">
+    <label for="private"> Private</label>
+  </div>
+
+  <button type="submit" class="btn btn-dark">Submit</button>
+</div>
+
+      </form>
+
+    </main>
+      <!-- Bootstrap   JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
