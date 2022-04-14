@@ -15,16 +15,36 @@ module.exports = (db) => {
   /* Get Request: quiz_selected for when user selects a quiz */
   router.get("/:id", (req, res) => {
     //const templateVars = {user: req.session["userID"]}
-    db.query(`SELECT questions.id as question_id, questions.question, quizzes.name, quizzes.id as quiz_id, answers.answer, answers.id
-    from questions
-    left join answers
-    on questions.id  = answers.question_id
-    join quizzes
-    on questions.quiz_id = quizzes.id
+    db.query(`SELECT questions.id as question_id, questions.question as question_name, quizzes.name as quiz_name, quizzes.id as quiz_id, answers.answer, answers.id
+    FROM questions
+    LEFT JOIN answers
+    ON questions.id  = answers.question_id
+    JOIN quizzes
+    ON questions.quiz_id = quizzes.id
     WHERE questions.quiz_id = $1;`, [req.params.id])
       .then(result => {
         const templateVars = {questions: result.rows}
-        console.log("+++++++++++", templateVars)
+        //console.log("+++++++++++", templateVars)
+        const data = result.rows;
+
+        //group specific answers to question
+        let questionsObj = {};
+        let q1 = [];
+
+        for (d of data) {
+          //console.log(d.question_id);
+          if (d.question_id == 1) {
+            q1.push(d.question_id);
+          }
+          if (d.question_id == 2) {
+            q1.push(d.question_id);
+          }
+        }
+        console.log(q1);
+
+
+        console.log(questionsObj);
+
         return res.render("quiz_selected", templateVars)
       })
       .catch(err => {
