@@ -12,19 +12,19 @@ VALUES
 INSERT INTO questions ( quiz_id, question )
   VALUES
   (1, 'texttexttexttexttexttexttexttexttexttexttexttextQUESTION1'),
-  (2, 'texttexttexttexttexttexttexttexttexttexttexttextQUESTION2'),
-  (3, 'texttexttexttexttexttexttexttexttexttexttexttextQUESTION3');
+  (1, 'texttexttexttexttexttexttexttexttexttexttexttextQUESTION2'),
+  (1, 'texttexttexttexttexttexttexttexttexttexttexttextQUESTION3');
 
 INSERT INTO answers ( answer, question_id, correct ) VALUES
 	 ('texttexttexttexttexttexttexttexttexttexttexttextBUT ALSO CORRECT',1, true),
-	 ('texttexttexttexttexttexttexttexttexttexttexttext',1, false),
-	 ('texttexttexttexttexttexttexttexttexttexttexttext',1, false),
-   ('texttexttexttexttexttexttexttexttexttexttexttext',1, false),
+	 ('texttexttexttexttexttexttexttexttexttexttextANSWE344text',1, false),
+	 ('texttexttexttexttexttexttexttexttexttextteANSWSER2xttext',1, false),
+   ('texttexttexttexttexttexttexttexttexttexttextANSWER4text',1, false),
 	 ('texttexttexttexttexttexttexttexttexttexttexttext',2, false),
 	 ('texttexttexttexttexttexttexttexttexttexttexttextQUESTION 2 BUT ALSO TRUE',2, true),
    ('texttexttexttexttexttexttexttexttexttexttexttext',2, false),
 	 ('texttexttexttexttexttexttexttexttexttexttexttext',2, false),
-   ('texttexttexttexttexttexttexttexttexttexttexttext',3, false),
 	 ('texttexttexttexttexttexttexttexttexttexttexttext',3, false),
    ('texttexttexttexttexttexttexttexttexttexttexttextQUESTION 3 BUT ALSO TRUE',3, true),
-	 ('texttexttexttexttexttexttexttexttexttexttexttext',3, false);
+	 ('texttexttexttexttexttexttexttexttexttexttexttext',3, false),
+   ('texttexttexttexttexttexttexttexttexttexttexttext',3, false);
