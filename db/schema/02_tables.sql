@@ -29,3 +29,10 @@ CREATE TABLE answers (
   correct BOOLEAN DEFAULT FALSE,
   question_id INTEGER REFERENCES questions(id) ON DELETE CASCADE
 );
+
+CREATE TABLE results (
+  id SERIAL PRIMARY KEY NOT NULL,
+  results TEXT,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+  quiz_id INTEGERE REFERENCES quizzes(id) ON DELETE CASCADE
+);
