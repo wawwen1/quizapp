@@ -30,8 +30,8 @@ module.exports = (db) => {
   });
 
   //CREATE QUIZ -- POST
-  router.post("/quizzes/new", (req, res) => {2
-    let { private } = req.body
+  router.post("/quizzes/new", (req, res) => {
+    let { private } = req.body;
     const { name, description } = req.body;
     const q1 = { question: req.body.q1, input: req.body.input1, answer: req.body.answer1 };
     const q2 = { question: req.body.q2, input: req.body.input2, answer: req.body.answer2 };
@@ -43,47 +43,48 @@ module.exports = (db) => {
       private = false;
     }
 
+    if (!name || !description || !q1.question || !q2.question || !q3.question) {
+      return res.send("Please fill out the quiz completely! Go back");
+    }
+
     db.query(`
-    INSERT INTO quizzes (name, description, private, created)
+    INSERT INTO quizzes (owner_id, name, description, private)
     VALUES ($1, $2, $3, $4)
     RETURNING *;
-    `, [name, description, private, '2022-04-13'])
-    .then(res => {
-      //console.log(res.rows[0]);
-      let quizID = res.rows[0].id;
+    `, [req.params.id, name, description, private])
+      .then(res => {
+        let quizID = res.rows[0].id;    //take quiz.id to input into questions
 
-      //loop through each set of questions to apply individual q&a
-      for (let q in newQuiz) {
-        db.query(`
+//LOOP THROUGH NEWQUIZ OBJECT TO ADD INDIVIDUAL QUESTIONS TO TABLE
+        for (let question of Object.keys(newQuiz)) {
+          db.query(`
         INSERT INTO questions (quiz_id, question)
         VALUES ($1, $2)
         RETURNING *;
-        `, [quizID, newQuiz[q].question])
-        .then(res => {
-          //console.log('QUESTIONS', res.rows[0])
-          let questionID = res.rows[0].id;
+        `, [quizID, newQuiz[question].question])
+            .then(res => {
+              let questionID = res.rows[0].id;    //take question.id input into answers
 
-          //when correct value = radio html value pass true to indicate correct answer
-          //when radio value != 1 (first option) how to make it = true
-
-            db.query(`
+//WHEN RADIO VALUE EQUALS ANSWER VALUE -> RESULT = TRUE
+              let correct = (newQuiz[question].answer ? true : false);  //true to match boolean input
+              db.query(`
             INSERT INTO answers (question_id, answer, correct)
             VALUES ($1, $2, $3)
             RETURNING *;
-            `, [questionID, newQuiz[q].input, correct])
-            .then(res => {
-              console.log('ANSWERS', res.rows[0])
-            })
-        })
-      }
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+            `, [questionID, newQuiz[question].input, correct])
+                .then(res => {
+                  console.log(res.rows[0]);
+                })
+                .catch(err => {
+                  res
+                    .status(500)
+                    .json({ error: err.message });
+                });
+            });
+        }
+      });
+      return res.redirect("/quizzes");
   });
-
 
 
   return router;

@@ -13,7 +13,7 @@ CREATE TABLE quizzes (
   name VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
   private BOOLEAN NOT NULL,
-  created DATE NOT NULL,
+  created DATE DEFAULT(current_date),
   owner_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
