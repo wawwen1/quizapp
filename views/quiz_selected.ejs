@@ -34,7 +34,7 @@
       <% for (let index in questions) { %>
         <tr>
           <% if (index % 4 === 0) {  %>
-          <td rowspan="4"><%= questions[index].id %>  </td>
+          <td rowspan="4"><%= questions[index].question_id %>  </td>
         <td rowspan="4"><%= questions[index].question %></td>
         <% } %>
         <td><%= questions[index].answer %> </td>
