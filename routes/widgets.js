@@ -63,23 +63,29 @@ module.exports = (db) => {
         RETURNING *;
         `, [quizID, newQuiz[question].question])
             .then(res => {
+              console.log(res.rows[0]);
               let questionID = res.rows[0].id;    //take question.id input into answers
 
 //WHEN RADIO VALUE EQUALS ANSWER VALUE -> RESULT = TRUE
-              let correct = (newQuiz[question].answer ? true : false);  //true to match boolean input
-              db.query(`
-            INSERT INTO answers (question_id, answer, correct)
-            VALUES ($1, $2, $3)
-            RETURNING *;
-            `, [questionID, newQuiz[question].input, correct])
+
+               // console.log(newQuiz[question].input);
+              for (let input of newQuiz[question].input) {
+
+                let correct = (newQuiz[question].answer ? true : false);  //true to match boolean input
+                db.query(`
+                INSERT INTO answers (question_id, answer, correct)
+                VALUES ($1, $2, $3)
+                RETURNING *;
+                `, [questionID, input, correct])
                 .then(res => {
                   console.log(res.rows[0]);
                 })
                 .catch(err => {
                   res
-                    .status(500)
-                    .json({ error: err.message });
+                  .status(500)
+                  .json({ error: err.message });
                 });
+              }
             });
         }
       });
