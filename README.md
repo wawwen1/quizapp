@@ -1,6 +1,13 @@
 LHL Node Skeleton
 =========
 
+## Final Product
+
+!["Screenshot of create quiz page"](https://github.com/wawwen1/quizapp/blob/master/docs/create_quiz.png?raw=true)
+
+!["Screenshot of quiz select page"](https://github.com/wawwen1/quizapp/blob/master/docs/quiz_selected.png?raw=true)
+
+
 ## Project Setup
 
 The following steps are only for _one_ of the group members to perform.
