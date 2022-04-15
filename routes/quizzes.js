@@ -12,46 +12,66 @@ module.exports = (db) => {
     //const templateVars = {user: req.session["userID"]}
   });
 
-  /* Get Request: quiz_selected for when user selects a quiz */
+//SELECT QUIZ -- GET
   router.get("/:id", (req, res) => {
-    //const templateVars = {user: req.session["userID"]}
-    db.query(`SELECT questions.id as question_id, questions.question as question_name, quizzes.name as quiz_name, quizzes.id as quiz_id, answers.answer, answers.id
+    db.query(`
+    SELECT questions.id, questions.question
     FROM questions
-    LEFT JOIN answers
-    ON questions.id  = answers.question_id
-    JOIN quizzes
-    ON questions.quiz_id = quizzes.id
-    WHERE questions.quiz_id = $1;`, [req.params.id])
-      .then(result => {
-        const templateVars = {questions: result.rows}
-        //console.log("+++++++++++", templateVars)
-        const data = result.rows;
+    JOIN quizzes ON quiz_id = quizzes.id
+    WHERE quiz_id = $1;
+    `, [req.params.id])
+    .then(res => {
+     let questionID = res.rows;
+     //console.log(questionID[0].id);
+     db.query(`
+     SELECT question_id, answers.answer, answers.correct
+     FROM questions
+     JOIN quizzes ON quiz_id = quizzes.id
+     JOIN answers ON question_id = questions.id
+     WHERE quiz_id = $1;
+     `, [req.params.id])
+     .then(ans => {
+      let answerID = ans.rows;
+      let questionsObject = {};
+      console.log('Answers: ', answerID);
+      console.log('Quiz: ', questionID);
+      for (let i = 0; i < questionID.length; i++) {
+        console.log(answerID[i].question_id);
 
-        //group specific answers to question
-        let questionsObj = {};
-        let q1 = [];
-
-        for (d of data) {
-          //console.log(d.question_id);
-          if (d.question_id == 1) {
-            q1.push(d.question_id);
-          }
-          if (d.question_id == 2) {
-            q1.push(d.question_id);
-          }
-        }
-        console.log(q1);
+        // if (answerID[i].question_id =)
+      }
 
 
-        console.log(questionsObj);
+     })
+     .catch(err => {
+       console.log(err);
+     })
 
-        return res.render("quiz_selected", templateVars)
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+    })
+    .catch(err => {
+      console.log(err);
+    })
+
+    // db.query(`SELECT questions.id as question_id, questions.question as question_name, quizzes.name as quiz_name, quizzes.id as quiz_id, answers.answer, answers.id
+    // FROM questions
+    // LEFT JOIN answers
+    // ON questions.id  = answers.question_id
+    // JOIN quizzes
+    // ON questions.quiz_id = quizzes.id
+    // WHERE questions.quiz_id = $1
+    // ORDER BY question_id
+    // `, [req.params.id])
+    //   .then(result => {
+    //     const templateVars = {questions: result.rows}
+    //     const data = result.rows;
+    //     console.log("+++++++++++", templateVars)
+    //     return res.render("quiz_selected", templateVars)
+    //   })
+    //   .catch(err => {
+    //     res
+    //       .status(500)
+    //       .json({ error: err.message });
+    //   });
 
   });
 
