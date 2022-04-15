@@ -12,9 +12,16 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 
+  <!-- External Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;800&display=swap" rel="stylesheet">
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/quiz_selected.css" />
+
 </head>
 
 <header>
@@ -23,32 +30,42 @@
 
 <body>
   <main style="margin: 1em;">
-    <h3>
-      <%= questions[0].name %>
-    </h3>
+    <div class="title">
+      <h3>
+        <%= questionsObject[0].name %>
+      </h3>
+    </div>
     <div class="container">
-      <% for (let index in questions) { %>
+      <% for (let index in questionsObject) { %>
         <div class="questions_container">
-          <% if (index % 4===0) { %>
-            <div class="quiz-question">
-              <label>
-                <h3>
-                  <!-- <%= questions[index].question_id %> -->
-                </h3>
-                <h3>
-                  <%= questions[index].question %>
-                </h3>
-              </label>
-            </div>
-            <% } %>
+          <div class="quiz-question">
+            <label>
+              <h3>
+                <%= questionsObject[index].question %>
+              </h3>
+            </label>
+          </div>
+
               <div class="quiz-answer">
-                <input type="radio" name="answer1" value="1" checked>
-                <div>
-                  <%= questions[index].answer %>
-                </div>
+                <input type="radio" name="answer<%= index %>" value="1">
+                <span class="answer"><%= questionsObject[index].answer[0] %></span>
               </div>
+              <div class="quiz-answer">
+                <input type="radio" name="answer<%= index %>" value="2">
+                <span class="answer"><%= questionsObject[index].answer[1] %></span>
+              </div>
+              <div class="quiz-answer">
+                <input type="radio" name="answer<%= index %>" value="3">
+                <span class="answer"><%= questionsObject[index].answer[2] %></span>
+              </div>
+              <div class="quiz-answer">
+                <input type="radio" name="answer<%= index %>" value="4">
+                <span class="answer"><%= questionsObject[index].answer[3] %></span>
+              </div>
+            </div>
+          </div>
               <% } %>
-        </div>
+              <button type="submit" class="btn btn-dark">Submit</button>
   </main>
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
