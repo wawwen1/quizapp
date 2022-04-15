@@ -64,27 +64,6 @@ module.exports = (db) => {
         console.log(err);
       });
 
-    // db.query(`SELECT questions.id as question_id, questions.question as question_name, quizzes.name as quiz_name, quizzes.id as quiz_id, answers.answer, answers.id
-    // FROM questions
-    // LEFT JOIN answers
-    // ON questions.id  = answers.question_id
-    // JOIN quizzes
-    // ON questions.quiz_id = quizzes.id
-    // WHERE questions.quiz_id = $1
-    // ORDER BY question_id
-    // `, [req.params.id])
-    //   .then(result => {
-    //     const templateVars = {questions: result.rows}
-    //     const data = result.rows;
-    //     console.log("+++++++++++", templateVars)
-    //     return res.render("quiz_selected", templateVars)
-    //   })
-    //   .catch(err => {
-    //     res
-    //       .status(500)
-    //       .json({ error: err.message });
-    //   });
-
   });
 
   return router;
