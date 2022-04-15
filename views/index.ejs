@@ -34,11 +34,13 @@
       </tr>
     </thead>
     <tbody>
+      <% for (let quiz of quizzes) { %>
       <tr>
-        <td>Quiz 1</td>
-        <td>First ever quiz woo woo</td>
-        <td><a href="https://www.google.com/">Test!</a></td>
+        <td><%= quiz.name %></td>
+        <td><%= quiz.description %></td>
+        <td><a href="http://localhost:8080/quizzes/<%= quiz.id %> ">Take The Test!</a></td>
       </tr>
+      <% } %>
     </tbody>
 
   </table>
