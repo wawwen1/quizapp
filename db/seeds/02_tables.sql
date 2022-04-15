@@ -5,9 +5,9 @@ VALUES
 
 INSERT INTO quizzes ( name, private , created , description, owner_id )
 VALUES
-('quiz1', true, '01/01/2020','texttexttexttexttexttext', 1),
+('quiz1', false, '01/01/2020','texttexttexttexttexttext', 1),
 ('quiz2', true, '01/01/2020','texttexttexttexttexttext', 1),
-('quiz3', true, '01/01/2020','texttexttexttexttexttext', 1);
+('quiz3', false, '01/01/2020','texttexttexttexttexttext', 1);
 
 INSERT INTO questions ( quiz_id, question )
   VALUES

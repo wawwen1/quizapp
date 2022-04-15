@@ -24,26 +24,8 @@ module.exports = (db) => {
     WHERE questions.quiz_id = $1;`, [req.params.id])
       .then(result => {
         const templateVars = {questions: result.rows}
-        //console.log("+++++++++++", templateVars)
+        console.log("+++++++++++", templateVars)
         const data = result.rows;
-
-        //group specific answers to question
-        let questionsObj = {};
-        let q1 = [];
-
-        for (d of data) {
-          //console.log(d.question_id);
-          if (d.question_id == 1) {
-            q1.push(d.question_id);
-          }
-          if (d.question_id == 2) {
-            q1.push(d.question_id);
-          }
-        }
-        console.log(q1);
-
-
-        console.log(questionsObj);
 
         return res.render("quiz_selected", templateVars)
       })
