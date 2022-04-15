@@ -1,0 +1,49 @@
+$myFont: 'Rubik', sans-serif;
+
+body {
+  background-color: rgb(36,41,51);
+  font-family: $myFont;
+  font-size: 18px;
+}
+
+.title h3 {
+  font-size: 40px;
+  color: white;
+}
+
+main {
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz-question h3 {
+  font-size: 30px;
+  color: white;
+}
+
+.quiz-answer {
+  background-color: rgb(36,41,51);
+  color: white;
+  text-align: left;
+  padding: 0px 20px;
+  margin: 0 20px 10px;
+
+  .answer {
+    margin-left: 15px;
+  }
+}
+
+
+.questions_container {
+  width: 500px;
+  min-width: 500px;
+  background-color: rgb(46,52,65);
+  text-align: center;
+  border: 2px solid;
+  padding: 20px;
+  margin: 20px auto;
+}
